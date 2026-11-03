@@ -8,6 +8,20 @@ from model.biblioteca_DTO import Biblioteca
 
 class BibliotecaDAO:
     def __init__(self):
-        pass
+        self.database_connect = DBConnect()
 
-    # TODO
+    def get_suppliers(self):
+        cnx = self.database_connect.get_connection()
+
+        cursor = cnx.cursor(dictionary=True)
+        query = """ SELECT * 
+                FROM S"""
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(Biblioteca(row["id"], row["nome"], row["indirizzo"]))
+            cursor.close()
+            cnx.close()
+        return result
+
+    # TOCORRECT

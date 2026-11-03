@@ -15,7 +15,7 @@ class BibliotecaDAO:
 
         cursor = cnx.cursor(dictionary=True)
         query = """ SELECT * 
-                FROM S"""
+                FROM B"""
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -24,4 +24,4 @@ class BibliotecaDAO:
             cnx.close()
         return result
 
-    # TOCORRECT
+# TOCORRECT

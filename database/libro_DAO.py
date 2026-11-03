@@ -8,6 +8,20 @@ from model.libro_DTO import Libro
 
 class LibroDAO:
     def __init__(self):
-        pass
+        self.database_connect = DBConnect()
 
-    # TODO
+    def get_suppliers(self):
+        cnx = self.database_connect.get_connection()
+
+        cursor = cnx.cursor(dictionary=True)
+        query = """ SELECT * 
+                    FROM B"""
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(Libro(row["id"], row["nome"], row["indirizzo"]))
+            cursor.close()
+            cnx.close()
+        return result
+
+# TOCORRECT

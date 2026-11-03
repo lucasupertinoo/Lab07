@@ -37,6 +37,13 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
+        ddlibri = ft.Dropdown(label="Scegli un'opzione",
+                              hint_text="Seleziona un elemento dalla lista...",
+                              width=300,
+                              on_change=mostralibri(),
+                              options=[ft.dropdown.Option("opzione_1", "Opzione 1"),
+                                       ft.dropdown.Option("opzione_2", "Opzione 2"),
+                                       ft.dropdown.Option("opzione_3", "Opzione 3")])
 
         # Sezione 3: Libri
         # TODO

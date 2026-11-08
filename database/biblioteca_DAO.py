@@ -10,18 +10,17 @@ class BibliotecaDAO:
     def __init__(self):
         self.database_connect = DBConnect()
 
-    def get_suppliers(self):
+    def get_biblioteca(self):
         cnx = self.database_connect.get_connection()
 
         cursor = cnx.cursor(dictionary=True)
-        query = """ SELECT * 
-                FROM B"""
+        query = """ SELECT id, nome, indirizzo 
+                FROM biblioteca"""
         cursor.execute(query)
         result = []
         for row in cursor:
             result.append(Biblioteca(row["id"], row["nome"], row["indirizzo"]))
-            cursor.close()
-            cnx.close()
+        cursor.close()
+        cnx.close()
         return result
 
-# TOCORRECT

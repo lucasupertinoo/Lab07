@@ -53,7 +53,7 @@ class View:
                                           width=150)
 
         # lv_risultati mostra la listview scrollabile con tutti i risultati
-        self.lv_risultati = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
+        self.lv_risultati = ft.ListView(height=400, spacing=10, padding=20, auto_scroll=True)
 
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)

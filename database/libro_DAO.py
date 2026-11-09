@@ -1,5 +1,8 @@
 from database.DB_connect import DBConnect
 from model.libro_DTO import Libro
+# Quando una classe eredita parti di un'altra metto quest'altra tra () della scritta class dopo il suo nome (riga 12)
+# Quando una classe utilizza un'altra classe, ad esempio creando oggetti riferiti a quella classe,
+# basta solo importarla senza mettere il suo nome tra () a riga 12.
 
 """
     LIBRO DAO
@@ -27,6 +30,7 @@ class LibroDAO:
         result = []
         for row in cursor:
             result.append(Libro(row["id"], row["titolo"], row["autore"], row["genere"], row["anno_pubblicazione"], row["id_biblioteca"]))
+        # La classe libro con cui creare i libri si trova nel DTO
 
         cursor.close()
         cnx.close()

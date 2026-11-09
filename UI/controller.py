@@ -28,7 +28,8 @@ class Controller:
 
         # --- Dropdown biblioteche ---
         # Option("Nessun filtro") -> key e testo visualizzato coincidono: "Nessun filtro"
-        self._view.dd_biblioteca.options.append(ft.dropdown.Option("Nessun filtro"))    # Appendo singolarmente il nessun filtro
+        self._view.dd_biblioteca.options.append(ft.dropdown.Option("Nessun filtro"))
+        # Appendo singolarmente il nessun filtro
 
         # Chiedo al Model la lista delle biblioteche (oggetti Biblioteca)
         biblioteche = self._model.get_biblioteche()

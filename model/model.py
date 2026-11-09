@@ -12,6 +12,7 @@ from database.libro_DAO import LibroDAO
 class Model:
     def __init__(self):
         # Creo un'istanza di ciascun DAO e la tengo come attributo "privato" (underscore iniziale)
+        # Qua viene eseguito l'init delle due classi e dunque rimane salvato un riferimento a DB Connect
         self._biblioteca_dao = BibliotecaDAO()
         self._libro_dao = LibroDAO()
 
@@ -28,8 +29,8 @@ class Model:
 
 
         for libro in libri:
-            check_biblioteca = True # 3a) Filtro biblioteca: parto dal presupposto che il libro vada bene (True)
-            # Il filtro è attivo solo se l'utente ha scelto una biblioteca vera
+            check_biblioteca = True # Filtro biblioteca: parto dal presupposto che il libro vada bene (True)
+            # Il filtro è attivo solo se l'utente ha scelto una biblioteca vera (biblioteca è definito nelle () a riga 19)
             if biblioteca is not None and biblioteca != "Nessun filtro":    # Controlla che ci sia una selezione dell'utente
                 # Confronto come stringhe: id_biblioteca nel DTO è int, la key del dropdown è str
                 if str(libro.id_biblioteca) != str(biblioteca): # Se il libro non è nella biblioteca lo scarto

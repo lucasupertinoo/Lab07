@@ -7,6 +7,8 @@ from UI.alert import AlertManager
     - Riceve i dati dal MODELLO e li presenta senza modificarli
     - Non contiene logica: quando l'utente interagisce, passa l'evento al Controller
 '''
+# La view riceve un controller da fuori e non deve usarlo chiamandolo per nome: dunque va bene solo settarlo
+# senza importarlo ad inizio file
 
 class View:
     def __init__(self, page: ft.Page):
@@ -38,6 +40,7 @@ class View:
         """ Crea e aggiunge gli elementi di UI alla pagina e la aggiorna. """
         # --- Sezione 1: Intestazione ---
         self.txt_titolo = ft.Text(value="Biblioteche di Torino", size=38, weight=ft.FontWeight.BOLD)
+        # Definisco delle variabili di istanza anche non nella init: infatti le definisco in queste funzioni
 
         # --- Sezione 2: Filtraggio ---
         # Dropdown delle biblioteche.

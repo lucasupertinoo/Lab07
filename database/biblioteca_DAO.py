@@ -12,8 +12,9 @@ class BibliotecaDAO:
 
     def get_biblioteca(self):
         cnx = self.database_connect.get_connection()
-        cursor = cnx.cursor(dictionary=True)
+        cursor = cnx.cursor(dictionary=True)  # dictionary=True -> ogni riga arriva come dizionario {"nome_colonna": valore}
 
+        # Nessun WHERE: servono TUTTE le biblioteche
         query = """ SELECT id, nome, indirizzo 
                     FROM biblioteca"""
         cursor.execute(query)

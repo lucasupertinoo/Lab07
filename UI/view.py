@@ -39,18 +39,18 @@ class View:
         self.dd_biblioteca = ft.Dropdown(label="Biblioteca",
                                          hint_text="Seleziona una biblioteca...",
                                          width=300,
-                                         on_change=self.controller.seleziona_biblioteca)
+                                         on_select=self.controller.seleziona_biblioteca)
         # Il dropdown lo popolo dal controller e non nella view
 
         self.dd_genere = ft.Dropdown(label="Genere",
                                          hint_text="Seleziona un genere...",
                                          width=300,
-                                         on_change=self.controller.seleziona_genere)
+                                         on_select=self.controller.seleziona_genere)
 
         # Sezione 3: Libri
-        self.btn_mostra_libri = ft.ElevatedButton(text="Mostra Libri",
-                                                  on_click=self.controller.mostra_libri,
-                                                  width=150)
+        self.btn_mostra_libri = ft.Button(content="Mostra Libri",
+                                          on_click=self.controller.mostra_libri,
+                                          width=150)
 
         # lv_risultati mostra la listview scrollabile con tutti i risultati
         self.lv_risultati = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
@@ -75,6 +75,7 @@ class View:
             self.lv_risultati
         )
 
+        self.controller.popola_dropdown()
         self.page.scroll = "adaptive"
         self.page.update()
 

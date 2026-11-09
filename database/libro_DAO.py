@@ -8,15 +8,14 @@ from model.libro_DTO import Libro
 
 class LibroDAO:
     def __init__(self):
-        self.database_connect = DBConnect()
+        self.database_connect = DBConnect
 
     def get_libro(self):
         cnx = self.database_connect.get_connection()
-
         cursor = cnx.cursor(dictionary=True)
+
         query = """ SELECT id, titolo, autore, genere, anno_pubblicazione, id_biblioteca 
-                    FROM libro
-                    WHERE genere = COALESCE(%s, genere)"""
+                    FROM libro"""
         cursor.execute(query)
         result = []
         for row in cursor:

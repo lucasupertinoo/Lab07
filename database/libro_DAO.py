@@ -15,7 +15,8 @@ class LibroDAO:
 
         cursor = cnx.cursor(dictionary=True)
         query = """ SELECT id, titolo, autore, genere, anno_pubblicazione, id_biblioteca 
-                    FROM libro"""
+                    FROM libro
+                    WHERE genere = COALESCE(%s, genere)"""
         cursor.execute(query)
         result = []
         for row in cursor:

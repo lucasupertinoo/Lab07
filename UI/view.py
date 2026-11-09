@@ -36,17 +36,24 @@ class View:
         self.txt_titolo = ft.Text(value="Biblioteche di Torino", size=38, weight=ft.FontWeight.BOLD)
 
         # --- Sezione 2: Filtraggio ---
-        # TODO
-        ddlibri = ft.Dropdown(label="Scegli un'opzione",
-                              hint_text="Seleziona un elemento dalla lista...",
-                              width=300,
-                              on_change=mostralibri(),
-                              options=[ft.dropdown.Option("opzione_1", "Opzione 1"),
-                                       ft.dropdown.Option("opzione_2", "Opzione 2"),
-                                       ft.dropdown.Option("opzione_3", "Opzione 3")])
+        self.dd_biblioteca = ft.Dropdown(label="Biblioteca",
+                                         hint_text="Seleziona una biblioteca...",
+                                         width=300,
+                                         on_change=self.controller.seleziona_biblioteca)
+        # Il dropdown lo popolo dal controller e non nella view
+
+        self.dd_genere = ft.Dropdown(label="Genere",
+                                         hint_text="Seleziona un genere...",
+                                         width=300,
+                                         on_change=self.controller.seleziona_genere)
 
         # Sezione 3: Libri
-        # TODO
+        self.btn_mostra_libri = ft.ElevatedButton(text="Mostra Libri",
+                                                  on_click=self.controller.mostra_libri,
+                                                  width=150)
+
+        # lv_risultati mostra la listview scrollabile con tutti i risultati
+        self.lv_risultati = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
 
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
@@ -59,11 +66,13 @@ class View:
             self.txt_titolo,
             ft.Divider(),
 
-            # Sezione 2: Filtraggio
-            # TODO
+            # Sezione 2: Filtraggio con i due dropdown
+            ft.Row([self.dd_biblioteca, self.dd_genere], alignment=ft.MainAxisAlignment.CENTER),
+            ft.Divider(),
 
-            # Sezione 3: Libri
-            # TODO
+            # Sezione 3: Libri bottone che mostra i libri e listview con elenco di libri
+            self.btn_mostra_libri,
+            self.lv_risultati
         )
 
         self.page.scroll = "adaptive"

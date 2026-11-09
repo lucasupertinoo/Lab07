@@ -31,6 +31,7 @@ class Model:
 
             if check_biblioteca and check_genere:
                 risultato.append(libro)
+        return risultato
 
     def get_generi(self):
         """Restituisce la lista di tutti i generi."""

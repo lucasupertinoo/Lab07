@@ -15,7 +15,8 @@ class BibliotecaDAO:
 
         cursor = cnx.cursor(dictionary=True)
         query = """ SELECT id, nome, indirizzo 
-                FROM biblioteca"""
+                FROM biblioteca
+                WHERE nome = COALESCE(%s, nome)"""
         cursor.execute(query)
         result = []
         for row in cursor:
